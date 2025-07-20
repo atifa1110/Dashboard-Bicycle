@@ -9,13 +9,6 @@ This project is a data visualization dashboard built using **Streamlit**, focuse
 - Group rental counts into Low, Medium, High (clustering-based binning).
 - RFM analysis for customer segmentation based on rental activity.
 
-## 🚀 Live Dashboard
-
-Click to open the deployed app:  
-[![Open in Streamlit](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://dashboard-atifa-bicycle.streamlit.app/)
-
----
-
 ## 🛠️ How to Run Locally
 
 1. Clone this repository:
