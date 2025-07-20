@@ -12,9 +12,7 @@ This project is a data visualization dashboard built using **Streamlit**, focuse
 ## 🚀 Live Dashboard
 
 Click to open the deployed app:  
-[![Open in Streamlit](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://your-streamlit-deploy-url-here)
-
-> Replace the link with your actual deployed URL (e.g., `https://dashboard-bicycle.streamlit.app`).
+[![Open in Streamlit](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://dashboard-bicycle.streamlit.app)
 
 ---
 
