@@ -30,7 +30,7 @@ This project is a data visualization dashboard built using **Streamlit**, focuse
 - pipenv shell
 - pip install -r requirements.txt
 
-## 🧩 Dependencies 
+## 🧩 Dependencies
 
 List of main Python libraries used:
 - pandas  
@@ -40,8 +40,8 @@ List of main Python libraries used:
 
 ## Run the Streamlit dashboard:
 
-1. Most common way
+### Most common way
 streamlit run app.py
 
-2.  Safer for virtual environments
+### Safer for virtual environments
 python -m streamlit run app.py
