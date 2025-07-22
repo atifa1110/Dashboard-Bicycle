@@ -16,31 +16,25 @@ sns.set_theme(style="whitegrid")
 day_df = pd.read_csv("data/day.csv")
 hour_df = pd.read_csv("data/hour.csv")
 
-# Konversi kolom tanggal
-day_df['dteday'] = pd.to_datetime(day_df['dteday'])
-
 # ======================
 # 🎛️ SIDEBAR FILTER
 # ======================
 st.sidebar.header("🎚️ Filter")
-min_date = day_df['dteday'].min()
-max_date = day_df['dteday'].max()
 
-start_date = st.sidebar.date_input("Mulai Tanggal", min_value=min_date, max_value=max_date, value=min_date)
-end_date = st.sidebar.date_input("Akhir Tanggal", min_value=min_date, max_value=max_date, value=max_date)
+# Konversi ke datetime
+day_df['dteday'] = pd.to_datetime(day_df['dteday'])
 
-# Validasi tanggal
-if start_date > end_date:
-    st.sidebar.error("Tanggal mulai tidak boleh setelah tanggal akhir.")
+# Ambil tahun minimum dan maksimum dari data
+min_year = day_df['dteday'].dt.year.min()
+max_year = day_df['dteday'].dt.year.max()
 
-# Filter dataset berdasarkan rentang tanggal
-filtered_day_df = day_df[(day_df['dteday'] >= pd.to_datetime(start_date)) & 
-                         (day_df['dteday'] <= pd.to_datetime(end_date))]
+# Filter berdasarkan tahun dari data (otomatis, tidak hardcode)
+filtered_day_df = day_df[
+    (day_df['dteday'].dt.year >= min_year) & (day_df['dteday'].dt.year <= max_year)
+]
 
-# Cek apakah data kosong
-if filtered_day_df.empty:
-    st.warning("⚠️ Tidak ada data dalam rentang tanggal yang dipilih. Silakan pilih tanggal lain.")
-    st.stop()
+# Tampilkan info tahun yang ditampilkan
+st.sidebar.info(f"Menampilkan data tahun {min_year} - {max_year}")
 
 # ======================
 # 🔁 TRANSFORMASI DATA

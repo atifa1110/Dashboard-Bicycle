@@ -15,3 +15,34 @@ This project is a data visualization dashboard built using **Streamlit**, focuse
    ```bash
    git clone https://github.com/atifa1110/Dashboard-Bicycle.git
    cd Dashboard-Bicycle
+
+## Setup Environment - Anaconda
+
+- conda create --name main-ds python=3.9
+- conda activate main-ds
+- pip install -r requirements.txt
+
+##  Setup Environment - Shell/Terminal
+
+- mkdir create_streamlit
+- cd create_streamlit
+- pipenv install
+- pipenv shell
+- pip install -r requirements.txt
+
+## 🧩 Dependencies
+
+List of main Python libraries used:
+- pandas  
+- matplotlib  
+- seaborn  
+- streamlit  
+For detailed versioning, please refer to requirements.txt.
+
+## Run the Streamlit dashboard:
+
+# Option 1: Most common way
+streamlit run app.py
+
+# Option 2: Safer for virtual environments
+python -m streamlit run app.py
