@@ -42,9 +42,6 @@ start_date = st.sidebar.date_input(
     "Tanggal Mulai", min_value=min_date, max_value=max_date, value=min_date
 )
 
-# Spacer sebelum tanggal akhir
-st.sidebar.markdown(" ")
-
 # Tanggal akhir
 end_date = st.sidebar.date_input(
     "Tanggal Akhir", min_value=min_date, max_value=max_date, value=max_date
@@ -53,6 +50,19 @@ end_date = st.sidebar.date_input(
 # Validasi
 if start_date > end_date:
     st.sidebar.error("Tanggal mulai harus lebih awal dari tanggal akhir.")
+
+# Filter musim interaktif
+season_map = {1: 'Spring', 2: 'Summer', 3: 'Fall', 4: 'Winter'}
+selected_seasons = st.sidebar.multiselect(
+    "Pilih Musim",
+    options=list(season_map.keys()),
+    format_func=lambda x: season_map[x],
+    default=list(season_map.keys())
+)
+
+if not selected_seasons:
+    st.warning("Silakan pilih minimal satu musim untuk menampilkan data.")
+    st.stop()
 
 # ======================
 # FILTER DATA
@@ -67,10 +77,9 @@ filtered_hour_df = hour_df.merge(
 # ======================
 # 🔁 TRANSFORMASI DATA
 # ======================
-
 # Tambah label musim
-season_map = {1: 'Spring', 2: 'Summer', 3: 'Fall', 4: 'Winter'}
 filtered_day_df['season_label'] = filtered_day_df['season'].map(season_map)
+filtered_day_df = filtered_day_df[filtered_day_df['season'].isin(selected_seasons)]
 
 # Tambah label tahun
 filtered_day_df['year'] = filtered_day_df['yr'].map({0: 2011, 1: 2012})
